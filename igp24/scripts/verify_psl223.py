@@ -4,7 +4,7 @@ pari = Pari()
 
 # Read first PSL(2,23) polynomial from baseline (ascending powers)
 coeffs = [int(x) for x in open('/Users/apple/SAIR/igp24/data/psl223_r0_lmfdb.txt').readline().strip().split(',')]
-f = pari.Pol(coeffs)
+f = pari.Polrev(coeffs)  # ascending powers -> monic degree 24
 print("f =", f)
 print("degree:", pari.poldegree(f))
 print("irreducible:", pari.polisirreducible(f))
