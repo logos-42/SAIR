@@ -76,8 +76,9 @@ def monicize(c):
     if all(z % lc == 0 for z in c):
         return [z // lc for z in c]
     out = []
-    for k in range(25):
+    for k in range(24):
         out.append(c[k] * lc ** (23 - k))
+    out.append(1)  # k=24: a_24 * a_24^(23-24) = 1
     return out
 
 def main():
