@@ -1,0 +1,3 @@
+source_id,company,vendor,kind,filename,raw_rel_path,status,compiled_into,notes
+lmfdb-baseline,LMFDB,,csv,lmfdb_baseline.csv,igp24/data/lmfdb_baseline.csv,new,,reference discriminants scoring baseline
+igp24-targets,SAIR,,tsv,targets.tsv,igp24/data/targets.tsv,new,,target label/r list for submission

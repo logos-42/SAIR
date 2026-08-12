@@ -150,10 +150,9 @@ def compositum_sum(fc, gc):
         comps = pari.polcompositum(f, g)
     except Exception:
         return []
-    deg = len(fc) - 1 + len(gc) - 1
+    deg = (len(fc) - 1) * (len(gc) - 1)
     out = []
-    for item in comps:
-        R = item[0]
+    for R in comps:
         if R.poldegree() == deg and is_irreducible(R):
             out.append(coeffs_of(R))
     return out
@@ -191,7 +190,8 @@ def main():
 
     print("building pools...", file=sys.stderr)
     for d, n_real in ((2,2),(3,3),(3,1),(4,4),(4,2),(4,0),(6,6),(6,4),(6,2),
-                      (8,8),(8,6),(8,4),(8,2),(12,12),(12,8),(12,4),(12,0)):
+                      (8,8),(8,6),(8,4),(8,2),(12,12),(12,10),(12,8),(12,6),
+                      (12,4),(12,2),(12,0)):
         got = 0; tries = 0
         while got < 25 and tries < 6000:
             tries += 1

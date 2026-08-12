@@ -11,3 +11,10 @@ venv/
 # API keys / secrets
 .env
 *.pem
+
+# Knowledge system / raw assets
+raw/
+raw_local/
+raw_vault/
+.obsidian/
+
