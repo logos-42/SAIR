@@ -1,6 +1,6 @@
 # macOS
 .DS_Store
-
+gap/
 # Python
 __pycache__/
 *.py[cod]

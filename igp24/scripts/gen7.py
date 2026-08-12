@@ -92,8 +92,9 @@ def main():
     #       r16 = 2*8 (8 pos roots), r12 = 2*6, r8 = 2*4, r4 = 2*2, r0 = 0 pos
     print("k=2 ...", file=sys.stderr)
     for npos, want_r in ((12, 24), (8, 16), (6, 12), (4, 8), (2, 4), (0, 0)):
-        made = 0
-        while made < 40:
+        made = 0; tries = 0
+        while made < 40 and tries < 800:
+            tries += 1
             g = split_base(12, npos, rng, positive=(npos == 12))
             if g is None: continue
             f = subst(g, 2)
@@ -109,8 +110,9 @@ def main():
     #   r(f)=r(g) for odd k -> want r in {24} impossible (deg 8). r values: 0..8.
     print("k=3 ...", file=sys.stderr)
     for n_real, want_r in ((8, 8), (6, 6), (4, 4), (2, 2), (0, 0)):
-        made = 0
-        while made < 25:
+        made = 0; tries = 0
+        while made < 25 and tries < 500:
+            tries += 1
             g = split_base(8, n_real, rng)
             if g is None: continue
             f = subst(g, 3)
@@ -127,8 +129,9 @@ def main():
     #   impossible -> max r = 2*6 = 12. r16 no. r12 = 6 pos, r8 = 4 pos, r4=2 pos, r0=0.
     print("k=4 ...", file=sys.stderr)
     for npos, want_r in ((6, 12), (4, 8), (2, 4), (0, 0)):
-        made = 0
-        while made < 25:
+        made = 0; tries = 0
+        while made < 25 and tries < 500:
+            tries += 1
             g = split_base(6, npos, rng, positive=(npos == 6))
             if g is None: continue
             f = subst(g, 4)
@@ -144,8 +147,9 @@ def main():
     #   r8 = 4 pos, r4 = 2 pos, r0 = 0.
     print("k=6 ...", file=sys.stderr)
     for npos, want_r in ((4, 8), (2, 4), (0, 0)):
-        made = 0
-        while made < 25:
+        made = 0; tries = 0
+        while made < 25 and tries < 500:
+            tries += 1
             g = split_base(4, npos, rng, positive=(npos == 4))
             if g is None: continue
             f = subst(g, 6)
@@ -160,8 +164,9 @@ def main():
     # k=8: deg-3 bases; r(f) = r(g) (odd k): r in {1,3}
     print("k=8 ...", file=sys.stderr)
     for n_real, want_r in ((3, 3), (1, 1)):
-        made = 0
-        while made < 20:
+        made = 0; tries = 0
+        while made < 20 and tries < 300:
+            tries += 1
             g = split_base(3, n_real, rng)
             if g is None: continue
             f = subst(g, 8)

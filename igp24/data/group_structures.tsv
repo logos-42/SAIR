@@ -1,0 +1,13 @@
+1699	768	true	((((C4 x C2) : C2) : C4) : (C2 x C2)) : C3
+1958	768	true	(D8 : (C4 x C4)) : S3
+1961	768	true	((C4 x C2 x C2) : D8) : S3
+1969	768	true	(C4 x C4) : ((C3 : Q8) : C2)
+1970	768	true	(C4 x C4) : ((C3 : Q8) : C2)
+1977	768	true	((C4 x C4) : QD16) : C3
+2012	768	true	(((C4 x C2) : D8) : (C2 x C2)) : C3
+2024	768	true	((((C4 x C2) : C4) : C2) : (C2 x C2)) : C3
+2025	768	true	((((C2 x C2) . (C2 x C2 x C2)) : C4) : C2) : C3
+2030	768	true	((((C2 x C2) : (C4 : C4)) : C2) : C2) : C3
+2050	768	true	((C2 x C2 x C2) . (C2 x C2 x C2 x C2 x C2)) : C3
+2080	768	true	((C4 x C2) : ((C2 x C2 x C2) : (C2 x C2))) : C3
+3394	1536	true	((C2 x Q8) : ((C2 x C2 x C2) : (C2 x C2))) : C3
