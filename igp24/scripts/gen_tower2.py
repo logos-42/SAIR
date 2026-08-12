@@ -37,7 +37,7 @@ def monicize(c):
     out.append(1)
     return out
 
-def sq_layer(f, bcoeffs):
+def sq_layer(f, bcoeffs, do_reduce=True):
     """Res_y(f(y), z²−b(y)) with z→x; monic degree-2d poly (if irreducible)."""
     fy = pari.subst(f, X, Y)
     b = pari.Pol(bcoeffs, Y)
@@ -60,14 +60,14 @@ def sq_layer(f, bcoeffs):
     P = pari.Polrev(c)
     if not is_irred(P):
         return None
-    # reduce to small-coefficient defining poly of the same field
-    try:
-        Pr = pari.polredabs(P)
-    except Exception:
-        Pr = P
-    if Pr.poldegree() != d:
-        Pr = P
-    cc = [int(z) for z in pari.Vecrev(pari.Pol(Pr, X))]
+    if do_reduce and d <= 12:
+        try:
+            Pr = pari.polredabs(P)
+        except Exception:
+            Pr = P
+        if Pr.poldegree() == d:
+            P = Pr
+    cc = [int(z) for z in pari.Vecrev(pari.Pol(P, X))]
     if any(abs(z) > 10**40 for z in cc):
         return None
     return cc
@@ -116,10 +116,10 @@ def main():
         c = sq_layer(f2, bc)
         if c is None: continue
         f3 = pari.Polrev(c)  # degree 12
-        # layer 3: √w, w ∈ K12
+        # layer 3: √w, w ∈ K12 (no reduce; keep moderate coeffs)
         bc = random_b(f3, rng, bound=4)
         if bc is None: continue
-        c = sq_layer(f3, bc)
+        c = sq_layer(f3, bc, do_reduce=False)
         if c is None: continue
         if len(c) != 25: continue
         c = monicize(c)
