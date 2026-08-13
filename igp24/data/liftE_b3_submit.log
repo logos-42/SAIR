@@ -1,0 +1,15 @@
+parsed 160 polynomials from data/liftE_b3_all.txt
+ok: True | submissionId: sub_c35860aa3b454670b18e7c1b3889f52b | batchId: igp24_batch_06c4f01d77734bda8b43235ce09d393d | status: queued | queued: 160 | rejected: 0
+[     1s] batch queued verified=0 failed=0 queued=160
+[    18s] batch queued verified=0 failed=0 queued=160
+[    30s] batch queued verified=0 failed=0 queued=160
+[    41s] batch queued verified=0 failed=0 queued=160
+[    56s] batch queued verified=0 failed=0 queued=160
+[    71s] batch queued verified=0 failed=0 queued=160
+[    82s] batch queued verified=0 failed=0 queued=160
+[    97s] batch queued verified=0 failed=0 queued=160
+[   111s] batch queued verified=0 failed=0 queued=160
+[   132s] batch queued verified=0 failed=0 queued=160
+[   148s] batch queued verified=0 failed=0 queued=160
+[   160s] batch queued verified=0 failed=0 queued=160
+[   171s] batch queued verified=0 failed=0 queued=160
