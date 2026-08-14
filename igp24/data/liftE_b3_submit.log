@@ -13,3 +13,84 @@ ok: True | submissionId: sub_c35860aa3b454670b18e7c1b3889f52b | batchId: igp24_b
 [   148s] batch queued verified=0 failed=0 queued=160
 [   160s] batch queued verified=0 failed=0 queued=160
 [   171s] batch queued verified=0 failed=0 queued=160
+[   197s] batch queued verified=0 failed=0 queued=160
+[   208s] batch queued verified=0 failed=0 queued=160
+[   219s] batch queued verified=0 failed=0 queued=160
+[   238s] batch queued verified=0 failed=0 queued=160
+[   250s] batch queued verified=0 failed=0 queued=160
+[   260s] batch queued verified=0 failed=0 queued=160
+[   278s] batch queued verified=0 failed=0 queued=160
+[   288s] batch queued verified=0 failed=0 queued=160
+[   306s] batch queued verified=0 failed=0 queued=160
+[   316s] batch queued verified=0 failed=0 queued=160
+[   332s] batch queued verified=0 failed=0 queued=160
+[   345s] batch queued verified=0 failed=0 queued=160
+[   356s] batch queued verified=0 failed=0 queued=160
+[   366s] batch queued verified=0 failed=0 queued=160
+[   377s] batch queued verified=0 failed=0 queued=160
+[   387s] batch queued verified=0 failed=0 queued=160
+[   397s] batch queued verified=0 failed=0 queued=160
+[   409s] batch queued verified=0 failed=0 queued=160
+[   420s] batch queued verified=0 failed=0 queued=160
+[   431s] batch queued verified=0 failed=0 queued=160
+[   442s] batch queued verified=0 failed=0 queued=160
+[   452s] batch queued verified=0 failed=0 queued=160
+[   464s] batch queued verified=0 failed=0 queued=160
+[   474s] batch queued verified=0 failed=0 queued=160
+[   487s] batch queued verified=0 failed=0 queued=160
+[   501s] batch queued verified=0 failed=0 queued=160
+[   511s] batch queued verified=0 failed=0 queued=160
+[   522s] batch queued verified=0 failed=0 queued=160
+[   533s] batch queued verified=0 failed=0 queued=160
+[   544s] batch queued verified=0 failed=0 queued=160
+[   555s] batch queued verified=0 failed=0 queued=160
+[   567s] batch queued verified=0 failed=0 queued=160
+[   581s] batch queued verified=0 failed=0 queued=160
+[   592s] batch queued verified=0 failed=0 queued=160
+[   606s] batch queued verified=0 failed=0 queued=160
+[   618s] batch queued verified=0 failed=0 queued=160
+[   628s] batch queued verified=0 failed=0 queued=160
+[   639s] batch queued verified=0 failed=0 queued=160
+[   649s] batch queued verified=0 failed=0 queued=160
+[   660s] batch queued verified=0 failed=0 queued=160
+[   674s] batch queued verified=0 failed=0 queued=160
+[   689s] batch queued verified=0 failed=0 queued=160
+[   703s] batch queued verified=0 failed=0 queued=160
+[   714s] batch queued verified=0 failed=0 queued=160
+Traceback (most recent call last):
+  File "/Users/apple/SAIR/igp24/scripts/submit.py", line 117, in <module>
+    main()
+  File "/Users/apple/SAIR/igp24/scripts/submit.py", line 68, in main
+    poll_batch(batch_id, headers)
+  File "/Users/apple/SAIR/igp24/scripts/submit.py", line 76, in poll_batch
+    d = http_json(url, None, headers, "GET").get("data", {})
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/apple/SAIR/igp24/scripts/submit.py", line 104, in http_json
+    with urllib.request.urlopen(req, timeout=300) as r:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/urllib/request.py", line 215, in urlopen
+    return opener.open(url, data, timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/urllib/request.py", line 515, in open
+    response = self._open(req, data)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/urllib/request.py", line 532, in _open
+    result = self._call_chain(self.handle_open, protocol, protocol +
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/urllib/request.py", line 492, in _call_chain
+    result = func(*args)
+             ^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/urllib/request.py", line 1392, in https_open
+    return self.do_open(http.client.HTTPSConnection, req,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/urllib/request.py", line 1348, in do_open
+    r = h.getresponse()
+        ^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/http/client.py", line 1428, in getresponse
+    response.begin()
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/http/client.py", line 331, in begin
+    version, status, reason = self._read_status()
+                              ^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/http/client.py", line 300, in _read_status
+    raise RemoteDisconnected("Remote end closed connection without"
+http.client.RemoteDisconnected: Remote end closed connection without response

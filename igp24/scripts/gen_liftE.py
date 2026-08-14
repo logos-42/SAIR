@@ -50,6 +50,13 @@ def get_real_subfield(n, deg):
     polys = res if res.type() == "t_VEC" else [res]
     for p in polys:
         if p.poldegree() == deg and int(pari.polsturm(p)) == deg:
+            # polredabs 压系数 → 提高 resultant 产率
+            try:
+                pr = pari.polredabs(p)
+                if pr.poldegree() == deg and int(pari.polsturm(pr)) == deg:
+                    return pr
+            except Exception:
+                pass
             return p
     return None
 
@@ -60,6 +67,23 @@ def get_s3xc2_base(d):
     if int(pari.polsturm(f_alpha)) != 3:
         return None
     comp = pari.polcompositum(f_alpha, X**2 - d)
+    for p in comp:
+        if p.poldegree() == 6:
+            try:
+                pr = pari.polredabs(p)
+                if pr.poldegree() == 6:
+                    return pr
+            except Exception:
+                return p
+    return None
+
+
+def get_c9xc2_base(d):
+    """Q(ζ9)^+(√d): Q(ζ9)^+ = x³-3x+1 (全实 C3), 二次扩张 degree 6, 全实, Gal=C6 (域不同 → 群不同)."""
+    f_zeta9 = pari.Polrev([1, -3, 0, 1])  # x³ - 3x + 1, 全实 C3
+    if int(pari.polsturm(f_zeta9)) != 3:
+        return None
+    comp = pari.polcompositum(f_zeta9, X**2 - d)
     for p in comp:
         if p.poldegree() == 6:
             try:
@@ -155,6 +179,9 @@ def main():
     if BASE == "cyclo13":
         f0 = get_real_subfield(13, 6)
         tag_base = "Q(ζ13)^+"
+    elif BASE == "c9xc2":
+        f0 = get_c9xc2_base(rng.choice([2, 3, 5, 6, 7]))
+        tag_base = "Q(ζ9)^+(√d)"
     else:
         f0 = get_s3xc2_base(rng.choice([2, 3, 5, 6, 7]))
         tag_base = "S3×C2"
@@ -170,9 +197,11 @@ def main():
         tries += 1
         # L1 = L0(√b)
         if MODE == "full":
-            bc = b_square_shift(f0, rng, sign=1)  # 全正
+            # b_lowdeg 偏移 8-12: σ(b) = 偏移 + Σbc[j]σ(x)^j, |σ(x)|≤2, deg≤2 → σ(b)∈(2,14) 全正
+            # 系数小 (10^9) → nfdisc 快; γ²+d 系数 10^26 太慢, 弃用
+            bc = b_lowdeg(f0, rng, 8, 12)
         elif MODE == "neg":
-            bc = b_square_shift(f0, rng, sign=-1)  # 全负
+            bc = b_lowdeg(f0, rng, -12, -8)  # 全负 → r=0
         else:
             bc = b_lowdeg(f0, rng, -4, 8)  # 随机
         if bc is None:
@@ -183,9 +212,9 @@ def main():
         f1 = pari.Polrev(c1)
         # L2 = L1(√c)
         if MODE == "full":
-            cc = b_square_shift(f1, rng, sign=1)
+            cc = b_lowdeg(f1, rng, 8, 12)  # K1 根尺度可能>2, 偏移 8-12 需验证全正
         elif MODE == "neg":
-            cc = b_square_shift(f1, rng, sign=-1)
+            cc = b_lowdeg(f1, rng, -12, -8)
         else:
             cc = b_lowdeg(f1, rng, -4, 8)
         if cc is None:
