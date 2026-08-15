@@ -15,6 +15,8 @@ from cypari2 import Pari
 pari = Pari()
 X, Y, Z = pari("x"), pari("y"), pari("z")
 SEED = int(sys.argv[1]) if len(sys.argv) > 1 else 20260815
+N_TARGET = int(sys.argv[2]) if len(sys.argv) > 2 else 40
+N_BASE = int(sys.argv[3]) if len(sys.argv) > 3 else 17  # cyclotomic order for degree-8 real subfield
 
 def is_irred(g):
     try: return bool(g.polisirreducible())
@@ -101,17 +103,16 @@ def rand_pq(f, rng, neg_shift=(-6, -3)):
 
 def main():
     rng = random.Random(SEED)
-    f0 = get_real_subfield(17, 8)
+    f0 = get_real_subfield(N_BASE, 8)
     if f0 is None:
-        print("FAIL: no Q(ζ17)^+ base", file=sys.stderr)
+        print(f"FAIL: no Q(ζ{N_BASE})^+ base", file=sys.stderr)
         return
-    print(f"f0 deg={f0.poldegree()} r={int(pari.polsturm(f0))}", file=sys.stderr)
+    print(f"f0(Q(ζ{N_BASE})^+) deg={f0.poldegree()} r={int(pari.polsturm(f0))}", file=sys.stderr)
     out = []
     seen = set()
     made = 0
     tries = 0
-    n_target = int(sys.argv[2]) if len(sys.argv) > 2 else 40
-    while made < n_target and tries < 500 * n_target:
+    while made < N_TARGET and tries < 500 * N_TARGET:
         tries += 1
         pc, qc = rand_pq(f0, rng)
         if pc is None:
