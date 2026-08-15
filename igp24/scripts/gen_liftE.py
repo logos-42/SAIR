@@ -179,6 +179,15 @@ def main():
     if BASE == "cyclo13":
         f0 = get_real_subfield(13, 6)
         tag_base = "Q(ζ13)^+"
+    elif BASE == "cyclo21":
+        f0 = get_real_subfield(21, 6)
+        tag_base = "Q(ζ21)^+"
+    elif BASE == "cyclo28":
+        f0 = get_real_subfield(28, 6)
+        tag_base = "Q(ζ28)^+"
+    elif BASE == "cyclo36":
+        f0 = get_real_subfield(36, 6)
+        tag_base = "Q(ζ36)^+"
     elif BASE == "c9xc2":
         f0 = get_c9xc2_base(rng.choice([2, 3, 5, 6, 7]))
         tag_base = "Q(ζ9)^+(√d)"
